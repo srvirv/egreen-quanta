@@ -61,6 +61,11 @@ def main(data_path, output_dir):
     os.makedirs(output_dir, exist_ok=True)
     df = load_and_label(data_path)
     train, test = subject_split(df)
+    print("\nTraining class distribution:")
+    print(train["target"].value_counts())
+    print("\nTesting class distribution:")
+    print(test["target"].value_counts())
+
 
     models = {
         "logistic_regression": LogisticRegression(
@@ -70,7 +75,7 @@ def main(data_path, output_dir):
             n_estimators=500, class_weight="balanced", random_state=42
         ),
         "svm": SVC(
-            probability=True, class_weight="balanced", random_state=42
+            class_weight="balanced", random_state=42
         ),
     }
 

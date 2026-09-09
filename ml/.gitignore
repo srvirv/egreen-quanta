@@ -6,3 +6,7 @@ __pycache__/
 # Do not commit raw OASIS data
 data/raw/
 *.xlsx
+
+# Do not commit prepared dataset files
+train_prepared.csv
+test_prepared.csv
