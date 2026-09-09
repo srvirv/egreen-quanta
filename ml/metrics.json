@@ -15,10 +15,10 @@
       "macro_f1": 0.5896877269426289
     },
     "Random Forest": {
-      "accuracy": 0.72,
-      "macro_precision": 0.6531762810832579,
-      "macro_recall": 0.7335249042145594,
-      "macro_f1": 0.6691708008504608
+      "accuracy": 0.7466666666666667,
+      "macro_precision": 0.6864219114219114,
+      "macro_recall": 0.803735632183908,
+      "macro_f1": 0.7077485380116958
     },
     "SVM": {
       "accuracy": 0.6666666666666666,
