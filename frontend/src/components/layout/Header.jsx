@@ -12,7 +12,7 @@ export default function Header() {
           {/* QPU Live Heartbeat Pill */}
           <div className="hidden md:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high border border-primary/15 text-on-primary-fixed-variant text-xs">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="font-medium tracking-tight">QPU: 16-Qubit Rigetti Sim (Online)</span>
+            <span className="font-medium tracking-tight">QML: 4-Qubit Simulator • Experimental</span>
           </div>
         </div>
 

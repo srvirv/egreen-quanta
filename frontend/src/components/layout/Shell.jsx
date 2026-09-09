@@ -14,7 +14,7 @@ export default function Shell({ children }) {
           <span>© 2026 Egreen Quanta — Quantum Machine Learning for Early Disease Detection</span>
           <span className="inline-flex items-center gap-1 text-primary">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
-            Rigetti Aspen-M3 Sim: 96.8% Fidelity
+            QML Research Simulator • Experimental
           </span>
         </div>
       </footer>
