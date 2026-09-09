@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="qGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#006A6B"/>
+      <stop offset="50%" stop-color="#00A3A6"/>
+      <stop offset="100%" stop-color="#4A54B2"/>
+    </linearGradient>
+    <radialGradient id="qCore" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#80D4D6" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#006A6B" stop-opacity="0.2"/>
+    </radialGradient>
+  </defs>
+  <circle cx="50" cy="50" r="42" stroke="url(#qGrad)" stroke-width="3" stroke-dasharray="6 4" opacity="0.5"/>
+  <ellipse cx="50" cy="50" rx="38" ry="16" stroke="url(#qGrad)" stroke-width="3" transform="rotate(-30 50 50)"/>
+  <ellipse cx="50" cy="50" rx="38" ry="16" stroke="url(#qGrad)" stroke-width="3" transform="rotate(30 50 50)"/>
+  <ellipse cx="50" cy="50" rx="38" ry="16" stroke="#4A54B2" stroke-width="2.5" transform="rotate(90 50 50)"/>
+  <circle cx="50" cy="50" r="14" fill="url(#qCore)"/>
+  <circle cx="50" cy="50" r="7" fill="#006A6B"/>
+  <circle cx="28" cy="38" r="3.5" fill="#00A3A6"/>
+  <circle cx="72" cy="62" r="3.5" fill="#4A54B2"/>
+  <circle cx="50" cy="22" r="3" fill="#80D4D6"/>
+</svg>

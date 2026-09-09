@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #005051;
+  --color-primary-container: #006a6b;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #97e7e7;
+  --color-inverse-primary: #84d4d4;
+  --color-primary-fixed: #a0f0f1;
+  --color-primary-fixed-dim: #84d4d4;
+  --color-on-primary-fixed: #002020;
+  --color-on-primary-fixed-variant: #004f50;
+
+  --color-secondary: #4b55b3;
+  --color-secondary-container: #919bfe;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #232d8c;
+  --color-secondary-fixed: #dfe0ff;
+  --color-secondary-fixed-dim: #bdc2ff;
+  --color-on-secondary-fixed: #000766;
+  --color-on-secondary-fixed-variant: #323c9a;
+
+  --color-tertiary: #005052;
+  --color-tertiary-container: #006a6c;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #73ecee;
+  --color-tertiary-fixed: #7df5f8;
+  --color-tertiary-fixed-dim: #5dd8db;
+  --color-on-tertiary-fixed: #002021;
+  --color-on-tertiary-fixed-variant: #004f51;
+
+  --color-surface: #f1fbfb;
+  --color-surface-dim: #d2dcdc;
+  --color-surface-bright: #f1fbfb;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #ebf6f5;
+  --color-surface-container: #e6f0f0;
+  --color-surface-container-high: #e0eaea;
+  --color-surface-container-highest: #dae5e4;
+  --color-surface-variant: #dae5e4;
+  --color-surface-tint: #00696a;
+
+  --color-on-surface: #141d1d;
+  --color-on-surface-variant: #3e4949;
+  --color-inverse-surface: #293232;
+  --color-inverse-on-surface: #e8f3f2;
+
+  --color-outline: #6e7979;
+  --color-outline-variant: #bec9c8;
+  --color-background: #f1fbfb;
+  --color-on-background: #141d1d;
+
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+
+  --font-sans: 'Roboto Flex', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --radius-DEFAULT: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+  --radius-full: 9999px;
+
+  --spacing-space-2xs: 0.125rem;
+  --spacing-space-xs: 0.25rem;
+  --spacing-space-sm: 0.5rem;
+  --spacing-space-md: 1rem;
+  --spacing-space-lg: 1.5rem;
+  --spacing-space-xl: 2rem;
+  --spacing-space-2xl: 3rem;
+  --spacing-space-3xl: 4rem;
+  --spacing-margin-desktop: 2rem;
+  --spacing-gutter-desktop: 1.5rem;
+  --spacing-margin-mobile: 1rem;
+  --spacing-gutter-mobile: 1rem;
+}
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+    font-family: var(--font-sans);
+    font-feature-settings: 'tnum' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+}
+
+/* Custom morphic utility classes */
+.morphic-card {
+  background-color: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(0, 106, 107, 0.08);
+  box-shadow: 0 4px 20px -2px rgba(0, 48, 49, 0.04);
+}
+
+.morphic-plate {
+  background-color: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(0, 106, 107, 0.12);
+  box-shadow: 0 8px 24px -4px rgba(0, 48, 49, 0.08);
+}
+
+.tabular-nums {
+  font-feature-settings: "tnum" 1;
+}
