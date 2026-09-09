@@ -31,3 +31,6 @@ htmlcov/
 # Build / temporary files
 *.tmp
 *.temp
+# Research datasets - do not commit
+data/raw/
+*.xlsx
