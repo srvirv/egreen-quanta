@@ -1,0 +1,30 @@
+{
+  "best_model": "Random Forest",
+  "test_subjects": 30,
+  "test_records": 75,
+  "labels": [
+    "Normal",
+    "MCI-like",
+    "AD"
+  ],
+  "models": {
+    "Logistic Regression": {
+      "accuracy": 0.6666666666666666,
+      "macro_precision": 0.5763734910076374,
+      "macro_recall": 0.646647509578544,
+      "macro_f1": 0.5896877269426289
+    },
+    "Random Forest": {
+      "accuracy": 0.72,
+      "macro_precision": 0.6531762810832579,
+      "macro_recall": 0.7335249042145594,
+      "macro_f1": 0.6691708008504608
+    },
+    "SVM": {
+      "accuracy": 0.6666666666666666,
+      "macro_precision": 0.6025910364145658,
+      "macro_recall": 0.7347701149425286,
+      "macro_f1": 0.6095311546000836
+    }
+  }
+}
