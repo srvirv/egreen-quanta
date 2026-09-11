@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 /*
  * Egreen Quanta - Explainability Page
@@ -153,9 +153,13 @@ function BrainVisualization({ view }) {
           }}
         >
           <div style={styles.brainInner} />
+
           <div style={styles.hotspotOne} />
+
           <div style={styles.hotspotTwo} />
+
           <div style={styles.hotspotThree} />
+
           <div style={styles.scanLine} />
         </div>
 
@@ -186,6 +190,7 @@ export default function Explainability() {
   return (
     <div style={styles.page}>
       {/* PAGE HEADER */}
+
       <div style={styles.pageHeader}>
         <div>
           <p style={styles.eyebrow}>
@@ -208,6 +213,7 @@ export default function Explainability() {
       </div>
 
       {/* DISCLAIMER */}
+
       <div style={styles.disclaimer}>
         <div style={styles.disclaimerIcon}>
           !
@@ -227,6 +233,7 @@ export default function Explainability() {
       </div>
 
       {/* PREDICTION SUMMARY */}
+
       <section style={styles.section}>
         <div style={styles.sectionHeader}>
           <div>
@@ -245,7 +252,6 @@ export default function Explainability() {
         </div>
 
         <div style={styles.summaryGrid}>
-          {/* Confidence */}
           <div style={styles.confidenceCard}>
             <span style={styles.cardLabel}>
               Model Prediction
@@ -264,7 +270,6 @@ export default function Explainability() {
             </span>
           </div>
 
-          {/* Probabilities */}
           <div style={styles.probabilityCard}>
             <div style={styles.cardTitle}>
               Class Probabilities
@@ -289,6 +294,7 @@ export default function Explainability() {
       </section>
 
       {/* MRI VISUAL EXPLANATION */}
+
       <section style={styles.section}>
         <div style={styles.sectionHeader}>
           <div>
@@ -306,7 +312,6 @@ export default function Explainability() {
             </p>
           </div>
 
-          {/* VIEW TOGGLE */}
           <div style={styles.viewToggle}>
             <button
               type="button"
@@ -340,6 +345,7 @@ export default function Explainability() {
       </section>
 
       {/* FEATURE ATTRIBUTION */}
+
       <section style={styles.section}>
         <div style={styles.sectionHeader}>
           <div>
@@ -403,6 +409,7 @@ export default function Explainability() {
       </section>
 
       {/* MODEL PERFORMANCE */}
+
       <section style={styles.section}>
         <div style={styles.sectionHeader}>
           <div>
@@ -456,6 +463,7 @@ export default function Explainability() {
       </section>
 
       {/* CONFUSION MATRIX */}
+
       <section style={styles.section}>
         <div style={styles.sectionHeader}>
           <div>
@@ -519,9 +527,10 @@ export default function Explainability() {
       </section>
 
       {/* METHODOLOGY */}
+
       <section style={styles.methodology}>
         <div style={styles.methodIcon}>
-          i
+          !
         </div>
 
         <div>
@@ -541,6 +550,7 @@ export default function Explainability() {
       </section>
 
       {/* FOOTER */}
+
       <div style={styles.footerNote}>
         Egreen Quanta • SIH #139 • Explainability Module •
         Research Prototype
@@ -993,8 +1003,7 @@ const styles = {
 
   tableHeader: {
     display: "grid",
-    gridTemplateColumns:
-      "2fr 1fr 1fr 1.3fr",
+    gridTemplateColumns: "2fr 1fr 1fr 1.3fr",
     padding: "13px 16px",
     background: "#f5f6f7",
     fontSize: "10px",
@@ -1005,8 +1014,7 @@ const styles = {
 
   tableRow: {
     display: "grid",
-    gridTemplateColumns:
-      "2fr 1fr 1fr 1.3fr",
+    gridTemplateColumns: "2fr 1fr 1fr 1.3fr",
     padding: "15px 16px",
     borderTop: "1px solid #e7e9eb",
     fontSize: "13px",
@@ -1029,8 +1037,7 @@ const styles = {
 
   matrixLabelsTop: {
     display: "grid",
-    gridTemplateColumns:
-      "110px repeat(3, 80px)",
+    gridTemplateColumns: "110px repeat(3, 80px)",
     gap: "5px",
     textAlign: "center",
     fontSize: "10px",
@@ -1040,8 +1047,7 @@ const styles = {
 
   matrixRow: {
     display: "grid",
-    gridTemplateColumns:
-      "110px repeat(3, 80px)",
+    gridTemplateColumns: "110px repeat(3, 80px)",
     gap: "5px",
     alignItems: "center",
   },
