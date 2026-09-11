@@ -17,7 +17,7 @@ const NAV_ITEMS = [
     to: '/circuit',
     label: 'Circuit',
     icon: 'memory',
-    badge: '16-Q',
+    badge: '4-Q',
   },
   {
     to: '/explainability',
