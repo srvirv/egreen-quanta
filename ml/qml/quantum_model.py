@@ -72,10 +72,10 @@ def quantum_circuit(x):
     for i in range(3):
         qml.CNOT(wires=[i, i + 1])
 
-    return [
-        qml.expval(qml.PauliZ(i))
-        for i in range(4)
-    ]
+    return (
+        [qml.expval(qml.PauliZ(i)) for i in range(4)]
+        + [qml.expval(qml.PauliX(i)) for i in range(4)]
+    )
 
 
 def quantum_features(X):
