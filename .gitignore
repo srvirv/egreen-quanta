@@ -34,3 +34,11 @@ htmlcov/
 # Research datasets - do not commit
 data/raw/
 *.xlsx
+
+# Local research experiment artifacts
+confusion_matrix.png
+ml/feature_importance.csv
+ml/feature_importance.png
+ml/qml/quantum_model_baseline.py
+ml/qml/quantum_model_zx.py
+ml/qml/quantum_model_zxy.py
