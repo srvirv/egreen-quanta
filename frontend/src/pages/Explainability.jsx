@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+
 /*
  * Egreen Quanta - Explainability Page
  * SIH #139
@@ -8,6 +9,7 @@ import React, { useState } from "react";
  * MRI heatmap and attribution values below are mock/precomputed
  * placeholders and are NOT clinically validated explanations.
  */
+
 const prediction = {
   patientId: "EQ-8832",
   prediction: "MCI-like",
@@ -18,6 +20,7 @@ const prediction = {
     AD: 17,
   },
 };
+
 const featureAttributions = [
   {
     feature: "MMSE",
@@ -56,6 +59,7 @@ const featureAttributions = [
     description: "Lower model contribution",
   },
 ];
+
 const modelResults = [
   {
     model: "Random Forest",
@@ -76,11 +80,13 @@ const modelResults = [
     status: "Baseline",
   },
 ];
+
 const confusionMatrix = [
   [33, 5, 2],
   [7, 17, 5],
   [0, 0, 6],
 ];
+
 function ProbabilityBar({ label, value }) {
   return (
     <div style={styles.probabilityRow}>
@@ -88,6 +94,7 @@ function ProbabilityBar({ label, value }) {
         <span>{label}</span>
         <strong>{value}%</strong>
       </div>
+
       <div style={styles.progressBackground}>
         <div
           style={{
@@ -99,28 +106,42 @@ function ProbabilityBar({ label, value }) {
     </div>
   );
 }
+
 function AttributionBadge({ contribution }) {
   let className = "low";
-  if (contribution === "High") className = "high";
-  if (contribution === "Moderate") className = "moderate";
+
+  if (contribution === "High") {
+    className = "high";
+  }
+
+  if (contribution === "Moderate") {
+    className = "moderate";
+  }
+
   return (
     <span style={styles[`badge_${className}`]}>
       {contribution}
     </span>
   );
 }
+
 function BrainVisualization({ view }) {
   return (
     <div style={styles.brainContainer}>
       <div style={styles.brainHeader}>
         <div>
           <span style={styles.smallLabel}>MRI VIEW</span>
-          <h3 style={styles.brainTitle}>{view}</h3>
+
+          <h3 style={styles.brainTitle}>
+            {view}
+          </h3>
         </div>
+
         <span style={styles.prototypeBadge}>
           RESEARCH PROTOTYPE
         </span>
       </div>
+
       <div style={styles.brainImage}>
         <div
           style={{
@@ -137,47 +158,66 @@ function BrainVisualization({ view }) {
           <div style={styles.hotspotThree} />
           <div style={styles.scanLine} />
         </div>
+
         <div style={styles.legend}>
           <span>
             <i style={styles.orangeDot} />
             Higher model influence
           </span>
+
           <span>
             <i style={styles.grayDot} />
             Lower model influence
           </span>
         </div>
       </div>
+
       <p style={styles.imageNote}>
         Prototype visualization using a precomputed/mock attention
         overlay. This is not a clinically validated MRI explanation.
       </p>
-}
     </div>
   );
+}
+
 export default function Explainability() {
   const [view, setView] = useState("Coronal");
+
   return (
     <div style={styles.page}>
+      {/* PAGE HEADER */}
       <div style={styles.pageHeader}>
         <div>
-          <p style={styles.eyebrow}>EGREEN QUANTA</p>
+          <p style={styles.eyebrow}>
+            EGREEN QUANTA
+          </p>
+
           <h1 style={styles.title}>
             Explainability
           </h1>
+
           <p style={styles.subtitle}>
             Understand which features and regions influenced the
             research model's prediction.
           </p>
         </div>
+
         <div style={styles.researchBadge}>
           Research Prototype
         </div>
       </div>
+
+      {/* DISCLAIMER */}
       <div style={styles.disclaimer}>
-        <div style={styles.disclaimerIcon}>n</div>
+        <div style={styles.disclaimerIcon}>
+          !
+        </div>
+
         <div>
-          <strong>Research prototype — not a clinical diagnosis</strong>
+          <strong>
+            Research prototype — not a clinical diagnosis
+          </strong>
+
           <p>
             Model probabilities and visual explanations are intended
             for research demonstration only and have not been
@@ -185,45 +225,61 @@ export default function Explainability() {
           </p>
         </div>
       </div>
+
+      {/* PREDICTION SUMMARY */}
       <section style={styles.section}>
         <div style={styles.sectionHeader}>
           <div>
-            <p style={styles.sectionEyebrow}>PREDICTION SUMMARY</p>
+            <p style={styles.sectionEyebrow}>
+              PREDICTION SUMMARY
+            </p>
+
             <h2 style={styles.sectionTitle}>
               Patient #{prediction.patientId}
             </h2>
           </div>
+
           <div style={styles.predictionBadge}>
             {prediction.prediction}
           </div>
         </div>
+
         <div style={styles.summaryGrid}>
+          {/* Confidence */}
           <div style={styles.confidenceCard}>
             <span style={styles.cardLabel}>
               Model Prediction
             </span>
+
             <div style={styles.predictionText}>
               {prediction.prediction}
             </div>
+
             <div style={styles.confidenceValue}>
               {prediction.confidence}%
             </div>
+
             <span style={styles.confidenceLabel}>
               Top-class probability
             </span>
           </div>
+
+          {/* Probabilities */}
           <div style={styles.probabilityCard}>
             <div style={styles.cardTitle}>
               Class Probabilities
             </div>
+
             <ProbabilityBar
               label="Normal"
               value={prediction.probabilities.Normal}
             />
+
             <ProbabilityBar
               label="MCI-like"
               value={prediction.probabilities["MCI-like"]}
             />
+
             <ProbabilityBar
               label="AD"
               value={prediction.probabilities.AD}
@@ -231,20 +287,29 @@ export default function Explainability() {
           </div>
         </div>
       </section>
+
+      {/* MRI VISUAL EXPLANATION */}
       <section style={styles.section}>
         <div style={styles.sectionHeader}>
           <div>
-            <p style={styles.sectionEyebrow}>VISUAL EXPLANATION</p>
+            <p style={styles.sectionEyebrow}>
+              VISUAL EXPLANATION
+            </p>
+
             <h2 style={styles.sectionTitle}>
               MRI Attention Visualization
             </h2>
+
             <p style={styles.sectionDescription}>
               Prototype visualization of regions that may be
               associated with the model's prediction.
             </p>
           </div>
+
+          {/* VIEW TOGGLE */}
           <div style={styles.viewToggle}>
             <button
+              type="button"
               onClick={() => setView("Coronal")}
               style={{
                 ...styles.toggleButton,
@@ -255,7 +320,9 @@ export default function Explainability() {
             >
               Coronal
             </button>
+
             <button
+              type="button"
               onClick={() => setView("Sagittal")}
               style={{
                 ...styles.toggleButton,
@@ -268,23 +335,29 @@ export default function Explainability() {
             </button>
           </div>
         </div>
+
         <BrainVisualization view={view} />
       </section>
+
+      {/* FEATURE ATTRIBUTION */}
       <section style={styles.section}>
         <div style={styles.sectionHeader}>
           <div>
             <p style={styles.sectionEyebrow}>
               MODEL ATTRIBUTION
             </p>
+
             <h2 style={styles.sectionTitle}>
               Feature Contributions
             </h2>
+
             <p style={styles.sectionDescription}>
               Prototype attribution view for the current Random
               Forest prediction.
             </p>
           </div>
         </div>
+
         <div style={styles.attributionGrid}>
           {featureAttributions.map((item) => (
             <div
@@ -296,14 +369,17 @@ export default function Explainability() {
                   <span style={styles.featureName}>
                     {item.feature}
                   </span>
+
                   <span style={styles.featureValue}>
                     {item.value}
                   </span>
                 </div>
+
                 <AttributionBadge
                   contribution={item.contribution}
                 />
               </div>
+
               <div style={styles.attributionLine}>
                 <div
                   style={{
@@ -317,6 +393,7 @@ export default function Explainability() {
                   }}
                 />
               </div>
+
               <p style={styles.attributionDescription}>
                 {item.description}
               </p>
@@ -324,17 +401,21 @@ export default function Explainability() {
           ))}
         </div>
       </section>
+
+      {/* MODEL PERFORMANCE */}
       <section style={styles.section}>
         <div style={styles.sectionHeader}>
           <div>
             <p style={styles.sectionEyebrow}>
               MODEL PERFORMANCE
             </p>
+
             <h2 style={styles.sectionTitle}>
               Classical ML Comparison
             </h2>
           </div>
         </div>
+
         <div style={styles.modelTable}>
           <div style={styles.tableHeader}>
             <span>Model</span>
@@ -342,14 +423,24 @@ export default function Explainability() {
             <span>Macro-F1</span>
             <span>Status</span>
           </div>
+
           {modelResults.map((model) => (
             <div
               key={model.model}
               style={styles.tableRow}
             >
-              <strong>{model.model}</strong>
-              <span>{model.accuracy}</span>
-              <span>{model.macroF1}</span>
+              <strong>
+                {model.model}
+              </strong>
+
+              <span>
+                {model.accuracy}
+              </span>
+
+              <span>
+                {model.macroF1}
+              </span>
+
               <span
                 style={
                   model.status === "Best baseline"
@@ -363,21 +454,26 @@ export default function Explainability() {
           ))}
         </div>
       </section>
+
+      {/* CONFUSION MATRIX */}
       <section style={styles.section}>
         <div style={styles.sectionHeader}>
           <div>
             <p style={styles.sectionEyebrow}>
               EVALUATION
             </p>
+
             <h2 style={styles.sectionTitle}>
               Random Forest Confusion Matrix
             </h2>
+
             <p style={styles.sectionDescription}>
               Actual classes are rows and predicted classes are
               columns.
             </p>
           </div>
         </div>
+
         <div style={styles.matrixWrapper}>
           <div style={styles.matrixLabelsTop}>
             <span />
@@ -385,6 +481,7 @@ export default function Explainability() {
             <span>MCI-like</span>
             <span>AD</span>
           </div>
+
           {confusionMatrix.map((row, rowIndex) => (
             <div
               style={styles.matrixRow}
@@ -393,6 +490,7 @@ export default function Explainability() {
               <strong>
                 {["Normal", "MCI-like", "AD"][rowIndex]}
               </strong>
+
               {row.map((value, colIndex) => (
                 <div
                   key={colIndex}
@@ -413,17 +511,24 @@ export default function Explainability() {
             </div>
           ))}
         </div>
+
         <p style={styles.matrixNote}>
           Note: AD test-set support is small, so these results
           should not be interpreted as clinical validation.
         </p>
       </section>
+
+      {/* METHODOLOGY */}
       <section style={styles.methodology}>
-        <div style={styles.methodIcon}>n</div>
+        <div style={styles.methodIcon}>
+          i
+        </div>
+
         <div>
           <h3 style={styles.methodTitle}>
             How explainability will evolve
           </h3>
+
           <p style={styles.methodText}>
             This interface is designed to consume actual model
             explanation outputs in future iterations. Feature
@@ -434,6 +539,8 @@ export default function Explainability() {
           </p>
         </div>
       </section>
+
+      {/* FOOTER */}
       <div style={styles.footerNote}>
         Egreen Quanta • SIH #139 • Explainability Module •
         Research Prototype
@@ -441,6 +548,7 @@ export default function Explainability() {
     </div>
   );
 }
+
 const styles = {
   page: {
     minHeight: "100vh",
@@ -450,6 +558,7 @@ const styles = {
     fontFamily:
       "Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
   },
+
   pageHeader: {
     maxWidth: "1200px",
     margin: "0 auto 28px",
@@ -458,6 +567,7 @@ const styles = {
     alignItems: "flex-start",
     gap: "20px",
   },
+
   eyebrow: {
     margin: 0,
     fontSize: "11px",
@@ -465,18 +575,21 @@ const styles = {
     letterSpacing: "2px",
     opacity: 0.55,
   },
+
   title: {
     margin: "6px 0",
     fontSize: "34px",
     lineHeight: 1.1,
     fontWeight: 800,
   },
+
   subtitle: {
     margin: 0,
     color: "#6c7178",
     fontSize: "14px",
     maxWidth: "600px",
   },
+
   researchBadge: {
     padding: "8px 12px",
     borderRadius: "999px",
@@ -486,6 +599,7 @@ const styles = {
     fontWeight: 700,
     whiteSpace: "nowrap",
   },
+
   disclaimer: {
     maxWidth: "1200px",
     margin: "0 auto 24px",
@@ -496,9 +610,12 @@ const styles = {
     border: "1px solid #ece4c9",
     borderRadius: "14px",
   },
+
   disclaimerIcon: {
     fontSize: "20px",
+    fontWeight: 800,
   },
+
   section: {
     maxWidth: "1200px",
     margin: "0 auto 24px",
@@ -508,6 +625,7 @@ const styles = {
     borderRadius: "18px",
     boxShadow: "0 4px 20px rgba(0,0,0,0.03)",
   },
+
   sectionHeader: {
     display: "flex",
     justifyContent: "space-between",
@@ -515,6 +633,7 @@ const styles = {
     gap: "20px",
     marginBottom: "22px",
   },
+
   sectionEyebrow: {
     margin: 0,
     fontSize: "10px",
@@ -522,16 +641,19 @@ const styles = {
     fontWeight: 800,
     color: "#777d84",
   },
+
   sectionTitle: {
     margin: "5px 0 5px",
     fontSize: "21px",
     fontWeight: 800,
   },
+
   sectionDescription: {
     margin: 0,
     fontSize: "13px",
     color: "#747a81",
   },
+
   predictionBadge: {
     padding: "8px 14px",
     borderRadius: "999px",
@@ -540,74 +662,88 @@ const styles = {
     fontSize: "12px",
     fontWeight: 800,
   },
+
   summaryGrid: {
     display: "grid",
     gridTemplateColumns:
       "minmax(220px, 0.8fr) minmax(320px, 1.5fr)",
     gap: "18px",
   },
+
   confidenceCard: {
     padding: "24px",
     borderRadius: "15px",
     background: "#f7f8fa",
     border: "1px solid #e5e7ea",
   },
+
   cardLabel: {
     display: "block",
     color: "#747980",
     fontSize: "12px",
     marginBottom: "10px",
   },
+
   predictionText: {
     fontSize: "25px",
     fontWeight: 800,
   },
+
   confidenceValue: {
     marginTop: "18px",
     fontSize: "42px",
     fontWeight: 900,
   },
+
   confidenceLabel: {
     fontSize: "11px",
     color: "#777d83",
   },
+
   probabilityCard: {
     padding: "24px",
     borderRadius: "15px",
     border: "1px solid #e5e7ea",
   },
+
   cardTitle: {
     marginBottom: "18px",
     fontWeight: 800,
     fontSize: "14px",
   },
+
   probabilityRow: {
     marginBottom: "17px",
   },
+
   probabilityHeader: {
     display: "flex",
     justifyContent: "space-between",
     marginBottom: "7px",
     fontSize: "13px",
   },
+
   progressBackground: {
     height: "9px",
     borderRadius: "999px",
     background: "#e9ebee",
     overflow: "hidden",
   },
+
   progressFill: {
     height: "100%",
     borderRadius: "999px",
     background: "#25282d",
     transition: "width 0.5s ease",
   },
+
   viewToggle: {
     display: "flex",
     padding: "4px",
     borderRadius: "10px",
     background: "#f1f2f4",
   },
+
   toggleButton: {
     border: "none",
     background: "transparent",
@@ -617,15 +753,18 @@ const styles = {
     fontWeight: 700,
     fontSize: "12px",
   },
+
   toggleActive: {
     background: "#ffffff",
     boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
   },
+
   brainContainer: {
     borderRadius: "15px",
     border: "1px solid #e1e4e8",
     overflow: "hidden",
   },
+
   brainHeader: {
     padding: "16px 18px",
     display: "flex",
@@ -633,6 +772,7 @@ const styles = {
     alignItems: "center",
     borderBottom: "1px solid #e7e9eb",
   },
+
   smallLabel: {
     display: "block",
     fontSize: "9px",
@@ -640,10 +780,12 @@ const styles = {
     fontWeight: 800,
     color: "#858b91",
   },
+
   brainTitle: {
     margin: "3px 0 0",
     fontSize: "17px",
   },
+
   prototypeBadge: {
     fontSize: "9px",
     fontWeight: 800,
@@ -653,6 +795,7 @@ const styles = {
     background: "#f1f2f4",
     color: "#6e7379",
   },
+
   brainImage: {
     minHeight: "410px",
     background:
@@ -664,6 +807,7 @@ const styles = {
     position: "relative",
     overflow: "hidden",
   },
+
   brainShape: {
     width: "285px",
     height: "310px",
@@ -674,12 +818,14 @@ const styles = {
       "0 0 45px rgba(255,255,255,0.12), inset 0 0 30px rgba(0,0,0,0.45)",
     overflow: "hidden",
   },
+
   brainInner: {
     position: "absolute",
     inset: "25px",
     borderRadius: "48%",
     border: "2px solid rgba(255,255,255,0.14)",
   },
+
   hotspotOne: {
     position: "absolute",
     width: "75px",
@@ -691,6 +837,7 @@ const styles = {
     left: "62px",
     filter: "blur(5px)",
   },
+
   hotspotTwo: {
     position: "absolute",
     width: "70px",
@@ -702,6 +849,7 @@ const styles = {
     right: "53px",
     filter: "blur(7px)",
   },
+
   hotspotThree: {
     position: "absolute",
     width: "45px",
@@ -713,6 +861,7 @@ const styles = {
     right: "90px",
     filter: "blur(5px)",
   },
+
   scanLine: {
     position: "absolute",
     left: 0,
@@ -721,6 +870,7 @@ const styles = {
     height: "1px",
     background: "rgba(255,255,255,0.22)",
   },
+
   legend: {
     position: "absolute",
     bottom: "18px",
@@ -729,6 +879,7 @@ const styles = {
     color: "#d5d8dc",
     fontSize: "11px",
   },
+
   orangeDot: {
     display: "inline-block",
     width: "8px",
@@ -737,6 +888,7 @@ const styles = {
     background: "#ff7448",
     marginRight: "6px",
   },
+
   grayDot: {
     display: "inline-block",
     width: "8px",
@@ -745,6 +897,7 @@ const styles = {
     background: "#aeb3b9",
     marginRight: "6px",
   },
+
   imageNote: {
     margin: 0,
     padding: "12px 16px",
@@ -753,34 +906,40 @@ const styles = {
     background: "#fafbfc",
     borderTop: "1px solid #e6e8ea",
   },
+
   attributionGrid: {
     display: "grid",
     gridTemplateColumns:
       "repeat(auto-fit, minmax(250px, 1fr))",
     gap: "12px",
   },
+
   attributionCard: {
     padding: "17px",
     border: "1px solid #e4e6e9",
     borderRadius: "13px",
   },
+
   attributionTop: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     gap: "10px",
   },
+
   featureName: {
     display: "block",
     fontWeight: 800,
     fontSize: "14px",
   },
+
   featureValue: {
     display: "block",
     marginTop: "3px",
     fontSize: "11px",
     color: "#777d84",
   },
+
   attributionLine: {
     height: "7px",
     background: "#eceef0",
@@ -788,16 +947,19 @@ const styles = {
     marginTop: "15px",
     overflow: "hidden",
   },
+
   attributionFill: {
     height: "100%",
     background: "#34383e",
     borderRadius: "999px",
   },
+
   attributionDescription: {
     margin: "10px 0 0",
     fontSize: "11px",
     color: "#7b8086",
   },
+
   badge_high: {
     padding: "5px 8px",
     borderRadius: "999px",
@@ -805,6 +967,7 @@ const styles = {
     fontSize: "10px",
     fontWeight: 800,
   },
+
   badge_moderate: {
     padding: "5px 8px",
     borderRadius: "999px",
@@ -812,6 +975,7 @@ const styles = {
     fontSize: "10px",
     fontWeight: 800,
   },
+
   badge_low: {
     padding: "5px 8px",
     borderRadius: "999px",
@@ -820,14 +984,17 @@ const styles = {
     fontSize: "10px",
     fontWeight: 800,
   },
+
   modelTable: {
     border: "1px solid #e2e5e8",
     borderRadius: "13px",
     overflow: "hidden",
   },
+
   tableHeader: {
     display: "grid",
-    gridTemplateColumns: "2fr 1fr 1fr 1.3fr",
+    gridTemplateColumns:
+      "2fr 1fr 1fr 1.3fr",
     padding: "13px 16px",
     background: "#f5f6f7",
     fontSize: "10px",
@@ -835,40 +1002,50 @@ const styles = {
     textTransform: "uppercase",
     color: "#747a81",
   },
+
   tableRow: {
     display: "grid",
-    gridTemplateColumns: "2fr 1fr 1fr 1.3fr",
+    gridTemplateColumns:
+      "2fr 1fr 1fr 1.3fr",
     padding: "15px 16px",
     borderTop: "1px solid #e7e9eb",
     fontSize: "13px",
     alignItems: "center",
   },
+
   bestStatus: {
     fontWeight: 800,
   },
+
   normalStatus: {
     color: "#7a8086",
   },
+
   matrixWrapper: {
     maxWidth: "600px",
     display: "grid",
     gap: "5px",
   },
+
   matrixLabelsTop: {
     display: "grid",
-    gridTemplateColumns: "110px repeat(3, 80px)",
+    gridTemplateColumns:
+      "110px repeat(3, 80px)",
     gap: "5px",
     textAlign: "center",
     fontSize: "10px",
     fontWeight: 800,
     color: "#737980",
   },
+
   matrixRow: {
     display: "grid",
-    gridTemplateColumns: "110px repeat(3, 80px)",
+    gridTemplateColumns:
+      "110px repeat(3, 80px)",
     gap: "5px",
     alignItems: "center",
   },
+
   matrixCell: {
     height: "65px",
     display: "flex",
@@ -880,11 +1057,13 @@ const styles = {
     fontSize: "18px",
     fontWeight: 800,
   },
+
   matrixNote: {
     margin: "15px 0 0",
     fontSize: "11px",
     color: "#777d84",
   },
+
   methodology: {
     maxWidth: "1200px",
     margin: "0 auto 20px",
@@ -895,19 +1074,24 @@ const styles = {
     border: "1px solid #e2e5e8",
     borderRadius: "16px",
   },
+
   methodIcon: {
     fontSize: "25px",
+    fontWeight: 800,
   },
+
   methodTitle: {
     margin: 0,
     fontSize: "15px",
   },
+
   methodText: {
     margin: "7px 0 0",
     fontSize: "12px",
     lineHeight: 1.6,
     color: "#737980",
   },
+
   footerNote: {
     maxWidth: "1200px",
     margin: "0 auto",
@@ -916,4 +1100,4 @@ const styles = {
     fontSize: "10px",
     color: "#8a8f95",
   },
-}
+};
