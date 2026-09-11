@@ -213,7 +213,7 @@ export default function QuantumCircuit() {
 
                   {/* Measurement */}
                   <span className="px-2 py-1 rounded bg-slate-800 text-tertiary-fixed text-[11px]">
-                    ⟨Z⟩
+                    ⟨Z⟩ + ⟨X⟩
                   </span>
 
                 </div>
